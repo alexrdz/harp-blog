@@ -1,0 +1,16 @@
+{
+  "domains": [""],
+  "globals": {
+    "siteTitle": "Harp site + blog",
+    "github": "alexrdz",
+    "site_url": "",
+    "disqus": {
+      "enabled": false,
+      "shortname": ""
+    },
+    "sitemap": {
+      "enabled": true,
+      "changefreq": "daily"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "iowaztlan",
+  "version": "1.0.0",
+  "description": "iowaztlan blog",
+  "main": "index.js",
+  "scripts": {
+    "dev": "harp server ./src --port 9000",
+    "build": "gulp gen && harp compile ./src ./www && cp CNAME ./www/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "alexrdz",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-markdown-to-json": "^1.0.3",
+    "gulp-util": "^3.0.8",
+    "marked": "^0.3.7"
+  },
+  "dependencies": {}
+}
