@@ -19,7 +19,8 @@
     "gulp-markdown-to-json": "^1.0.3",
     "gulp-util": "^3.0.8",
     "harp": "^0.25.0",
-    "marked": "^0.3.7"
+    "marked": "^0.3.7",
+    "static-api": "^0.2.0"
   },
   "dependencies": {}
 }
