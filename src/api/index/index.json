@@ -1,8 +1,1 @@
-{
-  "slug": "index",
-  "title": "Welcome to Harp.",
-  "navText": "Home",
-  "layout": "_layout",
-  "body": "<h3 id=\"this-is-yours-to-own-enjoy-\">This is yours to own. Enjoy.</h3>\n",
-  "updatedAt": "2017-12-14T04:50:04.610Z"
-}
+{"slug":"index","title":"Welcome to Harp.","navText":"Home","layout":"_layout","body":"<h3 id=\"this-is-yours-to-own-enjoy-\">This is yours to own. Enjoy.</h3>\n","updatedAt":"2017-12-14T04:50:04.610Z"}
