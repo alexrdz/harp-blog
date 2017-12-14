@@ -1,10 +1,13 @@
-import gulp from 'gulp'
-import gutil from 'gulp-util'
-import harp from 'harp'
-import browserSync, { reload } from 'browser-sync'
-import markdownToJSON from 'gulp-markdown-to-json'
-import marked from 'marked'
-import fs from 'fs'
+import gulp from 'gulp';
+import gutil from 'gulp-util';
+import fs from 'fs';
+import harp from 'harp';
+import browserSync, { reload } from 'browser-sync';
+import markdownToJSON from 'gulp-markdown-to-json';
+import marked from 'marked';
+import path from 'path';
+import staticApi from 'static-api';
+import baseData from './src/jsonData/data.json';
 
 gulp.task('serve', () => {
   harp.server(`${__dirname}/src/`, {port: 9000},
@@ -81,11 +84,35 @@ include ../_partials/head
     generatePages();
   }
 
-})
+});
 
 gulp.task('build', function () {
   return gulp.src('')
     .pipe(shell([
       'harp compile . dist'
-    ]))
-})
+    ]));
+});
+
+
+gulp.task('make-api', () => {
+
+});
+
+
+
+gulp.task('gen-json', generateJson);
+function generateJson () {
+  gulp.src(['./src/**/*.md', '!./src/_templates/*.md'])
+    .pipe(gutil.buffer())
+    .pipe(markdownToJSON(marked, 'data.json'))
+    .pipe(gulp.dest('./src/jsonData'));
+}
+
+gulp.task('gen-api', generateApi());
+function generateApi() {
+  const dataFolder = './src/api/';
+  new staticApi({
+    outputFolder: dataFolder,
+    object: baseData
+  });
+}
