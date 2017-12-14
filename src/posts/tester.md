@@ -1,3 +1,6 @@
+---
+slug: tester
+title: Tester
 image:
 excerpt:
 layout: _layout

@@ -15,9 +15,9 @@ html
     h4 Posts
     ul
       - var keys = Object.keys(public.posts._data);
-      -  for(var i=0; i<Math.min(10,keys.length); i++) {
-      li
-        a(href="/posts/#{ keys[i] }") #{ public.posts._data[keys[i]].title }
-    -   }
+      - for(var i=0; i<Math.min(10,keys.length); i++) {
+        li
+          a(href="/posts/#{ keys[i] }") #{ public.posts._data[keys[i]].title }
+      - }
     .container
       != body
