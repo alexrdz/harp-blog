@@ -121,6 +121,9 @@ gulp.task('build', ['gen-json', 'gen-api'], () => {
 gulp.task('deploy-api', ['build'], () => {
   return gulp.src('')
     .pipe(shell([
-      'cp -r www/api/ ./api/ && git add api/ && git commit -m "initial api subtree commit" && git subtree push --prefix api origin gh-pages'
+      'cp -r www/api/ ./api/',
+      'git add api/',
+      'git commit -m "deploy api commit"',
+      'git subtree push --prefix api origin gh-pages'
     ]));
 });
