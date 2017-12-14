@@ -103,8 +103,6 @@ gulp.task('clear-api-dir', () => {
     .pipe(shell(['rm -rf ./src/api']));
 });
 
-
-
 gulp.task('gen-api', ['clear-api-dir'], generateApi);
 function generateApi() {
   return new staticApi({
@@ -112,7 +110,6 @@ function generateApi() {
     object: baseData
   });
 }
-
 
 gulp.task('build', ['gen-json', 'gen-api'], () => {
   return gulp.src('')
@@ -122,6 +119,8 @@ gulp.task('build', ['gen-json', 'gen-api'], () => {
 });
 
 gulp.task('deploy-api', ['build'], () => {
-  return gulp.src("./www/api/**/*")
-    .pipe(deploy());
+  return gulp.src('')
+    .pipe(shell([
+      'cp -r www/api/ ./api/ && git add api/ && git commit -m "initial api subtree commit" && git subtree push --prefix api origin gh-pages'
+    ]));
 });
