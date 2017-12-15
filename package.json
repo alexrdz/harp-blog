@@ -1,12 +1,13 @@
 {
-  "name": "iowaztlan",
+  "name": "harpjsblog",
   "version": "1.0.0",
-  "description": "iowaztlan blog",
+  "description": "harpjs blog",
   "main": "index.js",
   "scripts": {
     "dev": "gulp serve",
     "build": "gulp gen && harp compile ./src ./www && cp CNAME ./www/",
-    "deploy": "surge www/",
+    "deploy": "npm ruhn build && surge www/",
+    "deploy-api": "npm ruhn build && surge www/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "alexrdz",
@@ -16,7 +17,6 @@
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
-    "gulp-gh-pages": "^0.5.4",
     "gulp-markdown-to-json": "^1.0.3",
     "gulp-shell": "^0.6.3",
     "gulp-util": "^3.0.8",
