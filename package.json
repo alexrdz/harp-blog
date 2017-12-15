@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "gulp serve",
     "build": "gulp gen && harp compile ./src ./www && cp CNAME ./www/",
-    "deploy": "npm ruhn build && surge www/",
-    "deploy-api": "npm ruhn build && surge www/",
+    "deploy": "npm run build && surge www/",
+    "deploy-api": "npm run build && surge www/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "alexrdz",
