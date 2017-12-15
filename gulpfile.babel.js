@@ -29,6 +29,7 @@ function watchAllFiles() {
     [
       './src/posts/**/*.md',
       './src/*.md',
+      './src/**/*.ejs',
       './src/**/*.jade',
       './src/css/**/*.less',
       './src/css/**/*.sass',
