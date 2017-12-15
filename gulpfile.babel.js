@@ -1,9 +1,7 @@
 import gulp from 'gulp';
 import gutil from 'gulp-util';
 import shell from 'gulp-shell';
-import deploy from 'gulp-gh-pages';
 import fs from 'fs';
-import path from 'path';
 import harp from 'harp';
 import browserSync, { reload } from 'browser-sync';
 import markdownToJSON from 'gulp-markdown-to-json';
@@ -29,7 +27,6 @@ gulp.task('bs-reload', () => {
 
 
 gulp.task('gen-posts-data', generatePosts)
-
 function generatePosts () {
   return gulp.src('./src/posts/**/*.md')
     .pipe(gutil.buffer())
@@ -38,7 +35,6 @@ function generatePosts () {
 }
 
 gulp.task('gen-pages-data', generatePages)
-
 function generatePages () {
   return gulp.src('./src/*.md')
     .pipe(gutil.buffer())
@@ -49,14 +45,13 @@ function generatePages () {
 gulp.task('gen', ['gen-posts-data', 'gen-pages-data'])
 
 
-
+//- CLI-style commands to create pages && posts
 const templates = [];
 const templateFileNames = fs.readdirSync('./src/_templates/');
 templateFileNames.map(function (file) {
   return templates[file] = fs.readFileSync(`./src/_templates/${file}`)
-})
+});
 
-/* Create file */
 gulp.task('new', () => {
   const type = process.argv[3].replace(/^-+/, '')
   const path = process.argv[4]
@@ -85,7 +80,6 @@ include ../_partials/head
     fs.writeFileSync(`./src/${dir}${slug}.md`, slugify + templates[`${type}.md`]);
     generatePages();
   }
-
 });
 
 
