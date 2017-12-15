@@ -32,6 +32,7 @@ function watchAllFiles() {
       './src/**/*.jade',
       './src/css/**/*.less',
       './src/css/**/*.sass',
+      './src/css/**/*.styl',
       './src/css/**/*.css'
     ],
     ['gen', 'bs-reload']
