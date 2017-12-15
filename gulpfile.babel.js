@@ -12,19 +12,31 @@ import baseData from './src/jsonData/data.json';
 gulp.task('serve', () => {
   harp.server(`${__dirname}/src/`, {port: 9000},
     () => {
-      browserSync.init(['css/*.css', 'js/*.js'], {
+      browserSync.init({
         proxy: 'localhost:9000'
       });
     }
   );
-
-  gulp.watch(['./src/posts/**/*.md', './src/*.md', './src/**/*.jade'], ['gen-pages-data', 'gen-posts-data', 'bs-reload']);
+  watchAllFiles();
 });
 
 gulp.task('bs-reload', () => {
   return browserSync.reload()
 });
 
+function watchAllFiles() {
+  return gulp.watch(
+    [
+      './src/posts/**/*.md',
+      './src/*.md',
+      './src/**/*.jade',
+      './src/css/**/*.less',
+      './src/css/**/*.sass',
+      './src/css/**/*.css'
+    ],
+    ['gen', 'bs-reload']
+  );
+}
 
 gulp.task('gen-posts-data', generatePosts)
 function generatePosts () {
