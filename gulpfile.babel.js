@@ -53,7 +53,14 @@ function generatePages () {
   return gulp.src('./src/*.md')
     .pipe(gutil.buffer())
     .pipe(markdownToJSON(marked, '_data.json'))
-    .pipe(gulp.dest('./src'))
+    .pipe(gulp.dest('./src'));
+}
+
+function generateDataFile(dir) {
+  return gulp.src(`./src/${dir}/*.md`)
+    .pipe(gutil.buffer())
+    .pipe(markdownToJSON(marked, '_data.json'))
+    .pipe(gulp.dest(`./src/${dir}`));
 }
 
 gulp.task('gen', ['gen-posts-data', 'gen-pages-data'])
@@ -82,18 +89,13 @@ include ../_partials/head
 .container
 `
 
-  if (type === 'post') {
-    fs.writeFileSync(`./src/posts/${dir}${slug}.md`, slugify + templates[`${type}.md`]);
-    generatePosts();
+  if (!fs.existsSync(`./src/${dir}`)) {
+    const layout = fs.readFileSync('./src/_layout.jade');
+    fs.mkdirSync(`./src/${dir}`);
+    fs.writeFileSync(`./src/${dir}_layout.jade`, layout);
   }
-
-  if (type === 'page') {
-    if (!fs.existsSync(`./src/${dir}`)) {
-      fs.mkdirSync(`./src/${dir}`)
-    }
-    fs.writeFileSync(`./src/${dir}${slug}.md`, slugify + templates[`${type}.md`]);
-    generatePages();
-  }
+  fs.writeFileSync(`./src/${dir}${slug}.md`, slugify + templates[`${type}.md`]);
+  generateDataFile(dir);
 });
 
 
