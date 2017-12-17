@@ -90,7 +90,7 @@ include ../_partials/head
 `
 
   if (!fs.existsSync(`./src/${dir}`)) {
-    const layout = fs.readFileSync('./src/_layout.jade');
+    const layout = fs.readFileSync('./src/_layouts/_layout.jade');
     fs.mkdirSync(`./src/${dir}`);
     fs.writeFileSync(`./src/${dir}_layout.jade`, layout);
   }
