@@ -14,9 +14,7 @@ html
       h4 Pages
       ul
         for page, slug in public._data
-          if (slug !== '404')
-            - console.log('slug', slug);
-            li: a(href="/#{ slug }")= page.navText
+          li: a(href="/#{ slug }")= page.navText
 
     .from-css-file
       h4 Posts
