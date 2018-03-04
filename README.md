@@ -18,7 +18,7 @@ You can view your site at `localhost:9000`.
 ```
 $ gulp new --page About
 ```
-Creates a new markdown page named `about-me.md` in the root `src` directory. Pages are based off the `page.md` markdown template located in the `templates` directory.
+Creates a new markdown page named `about.md` in the root `src` directory. Pages are based off the `page.md` markdown template located in the `templates` directory.
 
 ### Create a new post with gulp
 ```
